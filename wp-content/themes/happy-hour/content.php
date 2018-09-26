@@ -1,7 +1,15 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<?php if (is_home()): ?>
     <div class="entry-thumbnail">
         <?php happy_hour_thumbnail('thumbnail'); ?>
     </div>
-    <div class="entry-header"></div>
-    <div class="entry-content"></div>
+<?php endif; ?>
+    <div class="entry-content-box">
+        <div class="entry-header"><?php happy_hour_entry_header(); ?></div>
+        <div class="entry-content"><?php happy_hour_entry_meta(); ?></div>
+        <div class="entry-content">
+            <?php happy_hour_entry_content(); ?>
+            <?php (is_single()? happy_hour_entry_tag() : '' )?>
+        </div>
+    </div>
 </article>

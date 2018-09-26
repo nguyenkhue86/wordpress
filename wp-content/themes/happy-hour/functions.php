@@ -39,8 +39,6 @@
             add_theme_support('post-formats', array(
                 'image',
                 'video',
-                'gallery',
-                'quote',
                 'link'
             ));
 
@@ -70,7 +68,7 @@
         add_action('init', 'happy_hour_theme_setup');
   }
 
-  /**----------------------------- TENOLATE FUNCTIONS */
+  /**----------------------------- TEMPLATE FUNCTIONS */
   if(!function_exists('happy_hour_header')){
       function happy_hour_header(){?>
         <div class="sitename">
@@ -99,14 +97,18 @@
         <?php
       }
   }
-
+  require_once('wp_bootstrap_navwalker.php');
   /**------------------------------- Setup Menu */
   if( !function_exists( 'happy_hour_menu' )) {
       function happy_hour_menu($menu){
           $menu = array(
               'theme_location' => $menu,
-              'container' => 'nav',
-              'container_class' => $menu
+              'container' => 'div',
+              'container_class' => 'collapse navbar-collapse ',
+              'container_id' => 'navbarSupportedContent',
+              'menu_class' => 'navbar-nav mr-auto',
+              'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
+              'walker' => new wp_bootstrap_navwalker()
           );
           wp_nav_menu($menu);
       }
@@ -137,9 +139,94 @@
   if( !function_exists('happy_hour_thumbnail') ){
       function happy_hour_thumbnail($size){
         if(!is_single() && has_post_thumbnail() && !post_password_required() || has_post_format('image')): ?>
-        <figure class="post-thumbnail">
-            <?php the_post_thumbnail($size); ?>
-        </figure>
+            <figure class="post-thumbnail">
+                <?php the_post_thumbnail($size); ?>
+            </figure>
       <?php endif;
       }
   }
+
+  /**Function display Header Post */
+  if( !function_exists('happy_hour_entry_header') ){
+    function happy_hour_entry_header(){
+        if( is_single()): ?>
+            <h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" ><?php the_title(); ?></a></h1>
+        <?php else : ?>
+            <h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" ><?php the_title(); ?></a></h2>
+        <?php endif;
+    }   
+ }
+
+ /**Function display Meta Post */
+ if( !function_exists('happy_hour_entry_meta') ){
+    function happy_hour_entry_meta(){
+        if( !is_page()): ?>
+            <div class="entry-meta">
+                <?php 
+                    printf( __('<span class="author">Posted by %1$s </span>','happyhour'),get_the_author()  );
+                    printf( __('<span class="date-publisher"> at %1$s </span>','happyhour'),get_the_date() );
+                    printf( __('<span class="category"> in %1$s </span>','happyhour'),get_the_category_list(',') );
+
+                    if( comments_open() ):
+                        echo '<span class="meta-reply">';
+                            comments_popup_link(
+                                __('Leave a comment','happyhour'),
+                                __('One comment','happyhour'),
+                                __('% commnent','happyhour'),
+                                __('Read all comments','happyhour')
+                            );
+                        echo '</span>';
+                    endif;
+                ?>
+            </div>
+        <?php endif;
+    }   
+ }
+
+ /**Function display Content Post */
+ if( !function_exists('happy_hour_entry_content') ){
+    function happy_hour_entry_content(){
+        if( !is_single() && !is_page()): {
+            the_excerpt();
+        } else : {
+            the_content();
+
+            /** Div single */
+            $link_pages = array(
+                'before' => __('<p>Page: ','happyhour'),
+                'after' => '</p>',
+                'nextpageLink' => __('Next Page','happyhour'),
+                'previouspageLink' => __('Previous Page','happyhour')
+            );
+            wp_link_pages($link_pages);
+        }  
+        endif;
+    }   
+ }
+
+  /**Function replace Read mode */
+ if( !function_exists('happy_hour_read_more') ) {
+     function happy_hour_read_more(){
+         return '<a class="read-more" href="'. get_permalink( get_the_ID() ). '">'.__('... [Read More]','happyhour').'</a>';
+     }
+ }
+ add_filter('excerpt_more','happy_hour_read_more');
+
+  /**Function display Tag */
+  if( !function_exists('happy_hour_entry_tag') ) {
+    function happy_hour_entry_tag(){
+        if( has_tag() ):
+            echo '<div class="entry-tag">';
+            printf( __('Tagged in %1$s','happyhour'), get_the_tag_list('',','));
+            echo '</div>';
+        endif;
+    }
+}
+/** Import file css */
+    function happy_hour_style() { 
+        wp_register_style('reset-style', get_template_directory_uri()."/reset.css", 'all');
+        wp_enqueue_style('reset-style');
+        wp_register_style('main-style', get_template_directory_uri()."/style.css", 'all');
+        wp_enqueue_style('main-style');
+    }
+    add_action('wp_enqueue_scripts','happy_hour_style');
