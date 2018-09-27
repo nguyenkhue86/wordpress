@@ -71,29 +71,19 @@
   /**----------------------------- TEMPLATE FUNCTIONS */
   if(!function_exists('happy_hour_header')){
       function happy_hour_header(){?>
-        <div class="sitename">
+        <div class="site">
         <?php 
-        if( is_home() ){
             printf(
-                '<h1> 
+                '<h1 class="site-name"> 
                     <a href="%1$s" title="%2$s"> %3$s </a> 
                 </h1>',
                 get_bloginfo('url'),
                 get_bloginfo('description'),
                 get_bloginfo('sitename')
             );
-        } else {
-            printf(
-                '<h3> 
-                    <a href="%1$s" title="%2$s"> %3$s </a> 
-                </h3>',
-                get_bloginfo('url'),
-                get_bloginfo('description'),
-                get_bloginfo('sitename')
-            );
-        }?>
+        ?>
+            <div class="site-description"><?php bloginfo('description'); ?></div>
         </div>
-        <div class="site-description"><?php bloginfo('description'); ?></div>
         <?php
       }
   }
@@ -230,3 +220,6 @@
         wp_enqueue_style('main-style');
     }
     add_action('wp_enqueue_scripts','happy_hour_style');
+
+/** disable Adminbar */
+add_filter('show_admin_bar','__return_false');

@@ -8,6 +8,7 @@
     Tags: Basic , two-column, happy-hour, tma_solution
     Textdomain: happyhour 
 */
+/* Common Css*/
 html {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -25,6 +26,7 @@ img {
     max-width: 100%;
 }
 a:hover, a:visited {
+    color:#333;
     text-decoration: none;
 }
 input,input[type="submit"],button {
@@ -32,9 +34,8 @@ input,input[type="submit"],button {
     padding: 5px 10px;
 }
 input[type="submit"] {
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
+    background: #343a40;
+    color: #ffffff;
 }
 p {
     text-align: justify !important;
@@ -58,30 +59,25 @@ table, table tr, table td {
     border: 1px solid #e7e7e7;
     padding: 8px;
 }
-/*--------div column---------*/
-
-.dropdown-menu {
-    background: rgb(12, 189, 36);
+/*---------------div column----------------------*/
+/*---------------Header-----------------*/
+.site {
+    padding: 2em 0;
 }
-.dropdown-menu li:hover {
-    background: rgb(19, 133, 19);
+.site-name{
+    margin: 0;
+    font-size: 3em;
+    font-weight: bolder;
 }
-.menu-item {
-    padding: 0.5em 1em;
-    
-}
-.menu-item a {
-    color: #fff;
-    font-weight: bold;
-}
-
-.container {
-    width: 80vw;
+/*div box*/
+.containers {
+    width: 100vw;
     margin: 0 auto;
     background: #fff;
     border: 1px solid #d1d1d1;
     padding: 0;
 }
+/*-----------------------------Content---------------*/
 .content {
     overflow: hidden;
     display: flex;
@@ -91,75 +87,11 @@ table, table tr, table td {
     width: 70%;
     padding: 1em;
 }
+
+/*--------------Sidebar--------------------*/
 #sidebar {
     width: 30%;
     padding: 1em;
-}
-.post {
-    overflow: hidden;
-    border-top:1px solid #e7e7e7;
-    display: flex;
-    flex-direction: row;
-}
-.post .entry-thumbnail {
-    min-width: 150px;
-    margin: 1em;
-}
-.post .entry-content-box {
-    flex: auto;
-    padding: 1em;
-}
-.entry-content {}
-.entry-meta {
-    font-size: 16px;
-    color: #6f6f6f;
-    font-style: italic;
-}
-.entry-meta a {
-    font-size: 16px;
-    color: #6f6f6f;
-    font-style: italic;
-}
-.entry-tag {
-    font-weight: bold;
-}
-/* Author */
-.author-box,#comments,#comments li {
-    overflow: hidden;
-    background: #f3f3f3;
-    padding: 10px 25px;
-    margin: 15px 0;
-    border: 1px solid #e1e1e1;
-}
-#comments li {
-    background: #fff;
-}
-
-.author-avatar {
-    float: left;
-    margin: 17px 25px 0 0;
-}
-.author-avatar img {
-    border-radius: 65px;
-    -webkit-border-radius:65px;
-    -moz-border-radius: 65px;
-}
-.reply {
-    display: inline-block;
-    padding: 5px 10px;
-    background: #e9e9e9;
-    border: 1px solid #e8e8e8;
-    border-radius: 5px;
-}
-.comment-meta a{
-    font-size: 0.9em;
-    color:#6f6f6f;
-    font-style: italic;
-}
-.comment-author img {
-    border-radius: 65px; 
-}
-#sidebar {
     font-size: 0.9em;
 }
 #sidebar ul,
@@ -169,9 +101,15 @@ table, table tr, table td {
     list-style: none;
     padding: 0;
 }
+.widgettitle {
+    background: #343a40;
+    color: #fff;
+    padding: 0.3em 0.5em;
+    font-size: 1.4em !important;
+}
 .widget {
-    background: #f7f7f7;
-    border: 1px solid #e8e8e8;
+
+    border-left: 1px solid #e8e8e8;
     padding: 1em !important;
     margin: 15px 0;
 }
@@ -194,6 +132,126 @@ table, table tr, table td {
 .widget_calendar table caption{
     font-weight: bold;
     font-size: 1.1em;
+}
+/*-----Search--------*/
+#searchsubmit {
+    border-radius: 0;
+    color:#fff;
+    background: rgb(97, 96, 96);
+}
+
+/*------------------------Menu primary----------------*/
+.bg-forestgreen{
+    background: rgb(12, 189, 36);
+}
+.dropdown-menu {
+    background: #343a40;
+    padding: 0;
+    border-radius: 0;
+    margin: 0;
+}
+.menu-item:hover,.dropdown-menu li:hover {
+    background: rgb(90, 90, 90);
+}
+.menu-item {
+    padding: 1em 1.5em;
+    
+}
+.menu-item a {
+    color: #fff;
+    font-weight: bold;
+}
+.navbar {
+    padding: 0 !important;
+}
+
+/*---------------------Post css----------------------*/
+.post {
+    overflow: hidden;
+    border-top:1px solid #e7e7e7;
+    display: flex;
+    flex-direction: row;
+}
+.post .entry-thumbnail {
+    min-width: 150px;
+    margin: 1em;
+}
+.post .entry-content-box {
+    flex: auto;
+    padding: 1em;
+}
+.entry-content {}
+
+.entry-meta {
+    font-size: 16px;
+    color: #6f6f6f;
+    font-style: italic;
+}
+.entry-meta a {
+    font-size: 16px;
+    color: #6f6f6f;
+    font-style: italic;
+}
+.entry-tag {
+    font-weight: bold;
+}
+/* ---------------------Author---------------------- */
+.author-box {
+    overflow: hidden;
+    background: #f3f3f3;
+    padding: 10px 25px;
+    margin: 15px 0;
+    border: 1px solid #e1e1e1;
+}
+.author-avatar {
+    float: left;
+    margin: 0;
+}
+.author-avatar img {  
+    border-radius: 65px;
+    -webkit-border-radius:65px;
+    -moz-border-radius: 65px;
+}
+.author-content {
+    padding: 2em;
+    font-size: 1em;
+}
+
+/*-----------------Commnent------------------*/
+.comment-list {
+    padding: 0 !important;
+}
+#comments li {
+    overflow: hidden;
+    background: #f3f3f3;
+    padding: 10px 25px;
+    margin: 15px 0;
+    border: 1px solid #e1e1e1;
+}
+#reply-title {
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+.comment-notes {
+    color: #6f6f6f;
+    font-style: italic;
+    font-size: 0.8em;
+}
+.reply {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #343a40;
+}
+.reply .comment-reply-link{
+    color: #ffffff;
+}
+.comment-meta a{
+    font-size: 0.9em;
+    color:#6f6f6f;
+    font-style: italic;
+}
+.comment-author img {
+    border-radius: 65px; 
 }
 
 
@@ -267,9 +325,6 @@ blockquote.right {
 .size-medium {}
 .size-thumbnail {}
 
-.bg-forestgreen{
-    background: rgb(12, 189, 36);
-}
 
 #footer {
     width: 100%;
