@@ -19,7 +19,7 @@
             .login #nav a,.login #backtoblog a {
                 color:#ffffff !important;
                 font-weight: bold;
-                font-size:1em;
+                font-size:1.2em;
             }
             .login #nav a: hover,.login #backtoblog a: hover {
                 color: #333 !important;
@@ -40,6 +40,31 @@
                 font-size:1em !important;
             }
 
+            /*-----Back to Home-------*/
+            .login #backtoblog {
+                position: absolute !important;
+                top:3em !important;
+                left: 3em !important;
+                
+            }
+            .login #backtoblog a{
+                font-size:2em !important;
+            }
+            
+            .login .privacy-policy-page-link {
+                margin:4em auto !important;
+            }
+            @media screen and ( max-width:500px){
+                .login #backtoblog {
+                    position: absolute !important;
+                    top:0.5em !important;
+                    left: 0.5em !important;
+                    
+                } 
+                .login #backtoblog a{
+                    font-size:1.5em !important;
+                }
+            }
         </style>
         <?php
      }

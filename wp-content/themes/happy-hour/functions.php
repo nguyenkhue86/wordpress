@@ -97,8 +97,7 @@
               'container_class' => 'collapse navbar-collapse ',
               'container_id' => 'navbarSupportedContent',
               'menu_class' => 'navbar-nav mr-auto',
-              'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
-              'walker' => new wp_bootstrap_navwalker()
+              'menu_slug' => 'dropdown-menu'
           );
           wp_nav_menu($menu);
       }
@@ -157,16 +156,7 @@
                     printf( __('<span class="date-publisher"> at %1$s </span>','happyhour'),get_the_date() );
                     printf( __('<span class="category"> in %1$s </span>','happyhour'),get_the_category_list(',') );
 
-                    if( comments_open() ):
-                        echo '<span class="meta-reply">';
-                            comments_popup_link(
-                                __('Leave a comment','happyhour'),
-                                __('One comment','happyhour'),
-                                __('% commnent','happyhour'),
-                                __('Read all comments','happyhour')
-                            );
-                        echo '</span>';
-                    endif;
+                    
                 ?>
             </div>
         <?php endif;

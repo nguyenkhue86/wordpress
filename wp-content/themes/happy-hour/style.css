@@ -9,6 +9,9 @@
     Textdomain: happyhour 
 */
 /* Common Css*/
+h2 {
+    font-size: 1.3em;
+}
 html {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -24,6 +27,10 @@ ul,ol {
 }
 img {
     max-width: 100%;
+    height: auto !important;
+}
+a{
+    color:#333;
 }
 a:hover, a:visited {
     color:#333;
@@ -40,42 +47,66 @@ input[type="submit"] {
 p {
     text-align: justify !important;
 }
-h1 {
-    font-size: 2.2em;
-}
-h3 {
-    font-size: 1.8em;
-}
-h2 {
-    font-size: 1.55em;
-}
-h5 {
-    font-size: 1.3em;
-}
-h6 {
-    font-size: 1.1em;
-}
+
 table, table tr, table td {
     border: 1px solid #e7e7e7;
     padding: 8px;
 }
 /*---------------div column----------------------*/
+/*------------top Menu--------------------*/
+.top-menu {
+    background: #000;
+}
+.ul-top-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+}
+.ul-top-menu li{
+    display: block;
+    padding: 0.2em 0.5em;
+}
+.ul-top-menu li a{
+    color:#fff;
+    font-size: 0.9em;
+    font-weight: bolder;
+}
+.ul-top-menu li a .icon{
+    font-size: 1.2em;
+    font-weight: normal;
+}
+.ul-top-menu li:hover {
+    border-bottom: 1px solid #fff;
+}
 /*---------------Header-----------------*/
+.logo {
+    background: #ffffff;;
+}
 .site {
     padding: 2em 0;
 }
 .site-name{
     margin: 0;
-    font-size: 3em;
+    
+}
+.site-name a{
+    font-size: 1.3em;
     font-weight: bolder;
+    color: #000 !important;
+}
+.site-description {
+    color: #000;
 }
 /*div box*/
 .containers {
     width: 100%;
     margin: 0 auto;
-    background: #fff;
-    border: 1px solid #d1d1d1;
+    background: #e8e8e8;
     padding: 0;
+}
+#container {
+    background: #fff;
 }
 /*-----------------------------Content---------------*/
 .content {
@@ -129,23 +160,32 @@ table, table tr, table td {
     background: #7c7c7c;
     color: #fff;
 }
+.widget_calendar table a {
+    color: rgb(4, 0, 252) !important;
+}
+.widget_calendar table a:visited {
+    color: rgb(4, 0, 252) !important;
+}
 .widget_calendar table caption{
     font-weight: bold;
     font-size: 1.1em;
 }
 /*-----Search--------*/
 #searchsubmit {
+    border: 0;
+    background: none;
     border-radius: 0;
     color:#fff;
-    background: rgb(97, 96, 96);
 }
-
+.cat-item a:hover {
+    color: rgb(0, 4, 255);
+}
 /*------------------------Menu primary----------------*/
 .bg-forestgreen{
     background: rgb(12, 189, 36);
 }
 .dropdown-menu {
-    background: #343a40;
+    background: #000;
     padding: 0;
     border-radius: 0;
     margin: 0;
@@ -153,18 +193,28 @@ table, table tr, table td {
 .menu-item:hover,.dropdown-menu li:hover {
     background: rgb(90, 90, 90);
 }
+.menu-item:hover .dropdown-menu{
+    display: block !important;
+}
 .menu-item {
     padding: 1em 1.5em;
-    
+    position: relative;
 }
 .menu-item a {
     color: #fff;
     font-weight: bold;
 }
 .navbar {
+    background: #000;
     padding: 0 !important;
+    border-top: 2px solid #fff;
 }
-
+.navbar-toggler i {
+    color: #fff;
+}
+.search-box {
+    text-align: right;
+}
 /*---------------------Post css----------------------*/
 .post {
     overflow: hidden;
@@ -180,20 +230,37 @@ table, table tr, table td {
     flex: auto;
     padding: 1em;
 }
+
+.entry-title {
+
+}
+.entry-title a {
+    color: rgb(17, 0, 255);
+    font-size: 1em;
+}
 .entry-content {}
 
+
 .entry-meta {
-    font-size: 16px;
+    font-size: 0.8em;
     color: #6f6f6f;
     font-style: italic;
+    margin-bottom: 1em;
 }
 .entry-meta a {
-    font-size: 16px;
     color: #6f6f6f;
     font-style: italic;
 }
 .entry-tag {
     font-weight: bold;
+}
+
+.read-more {
+    margin-left: 1em;
+    border-radius: 65px;
+    display: inline-block;
+    padding: 0.1em 0.5em;
+    color: rgb(252, 172, 0) !important;
 }
 /* ---------------------Author---------------------- */
 .author-box {
@@ -325,9 +392,124 @@ blockquote.right {
 .size-medium {}
 .size-thumbnail {}
 
-
+/*-------------------footer----------------------------*/
 #footer {
     width: 100%;
-    padding: 1em;
     background: #e8e8e8;
+}
+
+#breadcrumbs a {
+    color: rgb(27, 152, 255) !important;
+}
+.meta-reply {
+    
+    
+}
+.meta-reply a{
+    font-size: 0.9em;
+    color: royalblue !important;
+    font-style: italic;
+}
+.footer-content {
+    display: flex;
+    flex-direction: row;
+    padding: 1em 5em;
+    background: #000;
+    justify-content: space-between;
+    color: #fff;
+}
+.link {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+.link a {
+    color:#fff;
+    display: inline-block;
+    padding: 0.2em 0.3em 0.1em 0.3em;
+}
+.intro-social {
+    padding: 1em;
+}
+.intro-social a {
+    color: #fff;
+    font-size: 2em;
+    display: inline-block;
+    padding: 0.2em 0.3em 0.1em 0.3em;
+    
+}
+.link a:hover {
+   border-bottom: 1px solid #fff;
+   animation-delay: 2s;
+    -webkit-animation-delay: 2s;
+    -moz-animation-delay: 2s;
+}
+/*-----------------Contact--------------------*/
+.contact-info {
+    padding: 1em;
+}
+.contact-info iframe {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    display: inline-block;
+    border: 1px solid #6f6f6f;
+    height: 300px;
+}
+.wpcf7-form input, .wpcf7-form textarea {
+    max-width: 70vw;
+}
+/*----------------max-width =999-----------------*/
+@media screen and ( max-width:990px){
+    /*-----------------------------Content---------------*/
+    .content {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    #main-content {
+        width: 100%;
+        padding: 1em;
+    }
+    h1 {
+        font-size: 1.7em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    /*--------------Sidebar--------------------*/
+    #sidebar {
+        width: 90%;
+        margin: 0 auto;
+        padding: 1em;
+        font-size: 0.9em;
+    }
+    .searchform{
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+    .navbar {
+        padding: 0.4em !important;
+    }
+    .search-box input {
+        width: 70%;
+    }
+    .menu-item:hover,.dropdown-menu li:hover {
+        background: #000;
+    }
+}
+
+@media screen and ( max-width:500px){
+   .post {
+       flex-direction: column;
+   } 
+   .footer-content {
+        display: flex;
+        flex-direction: column;
+        padding: 2em;
+        background: #000;
+        justify-content: space-between;
+        color: #fff;
+    }
 }

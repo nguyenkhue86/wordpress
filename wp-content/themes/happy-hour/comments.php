@@ -21,7 +21,22 @@ if ( post_password_required() ) {
 ?>
 
 <div id="comments" class="comments-area">
-	<h2>Comments:</h2>
+	<h2>
+		Comments:
+		<?php 
+			if( comments_open() ):
+				echo '<span class="meta-reply">';
+					comments_popup_link(
+						__('Leave a comment','happyhour'),
+						__('One comment','happyhour'),
+						__('% comment','happyhour'),
+						__('Read all comments','happyhour')
+					);
+				echo '</span>';
+			endif;
+		?>
+	</h2>
+	
 	<?php if ( have_comments() ) : ?>
 
 		<ol class="comment-list">
@@ -30,6 +45,7 @@ if ( post_password_required() ) {
 					'style'       => 'ol',
 					'short_ping'  => true,
 					'avatar_size' => 56,
+					'max_depth' =>2
 				) );
 			?>
 		</ol><!-- .comment-list -->
@@ -40,7 +56,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'twentyfifteen' ); ?></p>
+		<p class="no-comments"><?php _e( 'Comments are closed.', 'happyhour' ); ?></p>
 	<?php endif; ?>
 
 	<?php comment_form(); ?>
